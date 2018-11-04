@@ -1,0 +1,18 @@
+name: Anders
+main: Anders\MyPlugin\Main
+version: 1.0.0
+api: [1.0.0]
+load: POSTWORLD
+author: Anders
+commands:
+ yoo:
+  description: "一个测试用的命令"
+  usage: "/yoo"
+  permission: MyPlugin.command.yoo
+permissions:
+ MyPlugin.*:
+  description: "这代表只有OP有这个权限"
+  default: op
+ MyPlugin.command.yoo:
+  description: "这代表普通玩家也能使用这个指令"
+  default: true
