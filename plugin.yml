@@ -1,18 +1,18 @@
 name: Anders
-main: Anders\MyPlugin\Main
+main: Anders\Main
 version: 1.0.0
-api: [1.0.0]
+api: [4.0.0]
 load: POSTWORLD
 author: Anders
 commands:
- yoo:
-  description: "一个测试用的命令"
-  usage: "/yoo"
+ Anders:
+  description: "AndersPlugin"
+  usage: "/Anders"
   permission: MyPlugin.command.yoo
 permissions:
- MyPlugin.*:
-  description: "这代表只有OP有这个权限"
+ Anders.*:
+  description: "OP"
   default: op
- MyPlugin.command.yoo:
-  description: "这代表普通玩家也能使用这个指令"
+ Anders.command.Anders:
+  description: "Player"
   default: true
