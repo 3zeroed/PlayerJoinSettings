@@ -8,7 +8,7 @@ commands:
  Anders:
   description: "AndersPlugin"
   usage: "/Anders"
-  permission: MyPlugin.command.yoo
+  permission: Anders.command.yoo
 permissions:
  Anders.*:
   description: "OP"
