@@ -19,4 +19,5 @@ class Main extends PluginBase implements Listener
 	{
 		//Plugin disabled
 	}
+	//Very good, at least he can now function normally.
 }
