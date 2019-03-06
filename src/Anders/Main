@@ -1,23 +1,31 @@
 <?php
-namespace Anders\Mian;
+namespace Anders;
 
-use pocketmine\plugin\Plugin;
 use pocketmine\event\Listener;
-use pocketmine\command\Command;
+use pocketmine\plugin\Plugin;
 use pocketmine\plugin\PluginBase;
+use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 
-class Main extends PluginBase implements Listener
-{
-	public function onEnable()
-	{
-		//Plugin enabled
-		$this->getServer()->getPluginManager()->registerEvents($this,$this);
+class Main extends PluginBase implements Listener{
+
+	public function onEnable(){//Plugin enabled
+        	$this->getServer()->getPluginManager()->registerEvents($this,$this);
 	}
 	
-	public function onDisable()
-	{
-		//Plugin disabled
+	public function onLoad(){//Plugin Load
+        	@mkdir($this->getDataFolder(),0777,true);
+        	$this->config = new Config($this->getDataFolder().'config.yml', Config::YAML);
+        	$this->saveResource('config.yml', false);
+	}
+	
+	public function onCommand(CommandSender $sender, Command $command, $label, array $args): bool{//Command
+	switch($command->getName()){
+        	case "nocmd":
+	        return true;
+	}
+	
+	public function onDisable(){//Plugin disabled
 	}
 	//Very good, at least he can now function normally.
 }
