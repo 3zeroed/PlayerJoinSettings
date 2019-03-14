@@ -5,10 +5,10 @@ api: [3.0.0, 4.0.0]
 load: POSTWORLD
 author: Anders
 commands:
- Hello:
-  description: "Hello， World"
-  usage: "/Hello"
-  permission: PlayerJoinSettings.command
+ reloadconfig:
+  description: "reload PlayerJoinSettings config"
+  usage: "/reloadconfig"
+  permission: PlayerJoinSettings.command.reloadconfig
 permissions:
- PlayerJoinSettings.command:
-  default: true
+ PlayerJoinSettings.command.reloadconfig:
+  default: op
