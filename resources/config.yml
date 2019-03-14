@@ -1,7 +1,9 @@
 ---
 # Currently supported tags:
-# {name} - The name of the player.
-# {line} - Switch to the next line.
+# {name}          - The name of the player.
+# {line}          - Switch to the next line.
+# {online}        - The number of online players currently on the server
+# {max_online}    - The maximum number of players the server can accommodate
 # You can also use & replace with color symbols.
 
 # The headline on the screen when joining (Title).
@@ -14,8 +16,8 @@ SubTitle: "&bThis is a great server"
 Message: "&aHello {name}. {line}&bwelcome to this server. {line}&eI wish you a happy time!"
 
 # Server broadcast message when the player joins (PlayerJoinMessage).
-PlayerJoinMessage: "&l&7(&9+&7) &r&a{name} &ejoined the server."
+PlayerJoinMessage: "&l&7(&9 + &7) &r&a{name} &ejoined the server.&7[&a{online}&7/&6{max_online}&7]"
 
 # Server broadcast message when the player Quits (PlayerQuitMessage).
-PlayerQuitMessage: "&l&7(&c-&7) &r&a{name} &eQuit the server."
+PlayerQuitMessage: "&l&7(&c - &7) &r&a{name} &eQuit the server.&7[&a{online}&7/&6{max_online}&7]"
 ...
