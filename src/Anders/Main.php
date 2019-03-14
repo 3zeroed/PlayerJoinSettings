@@ -49,7 +49,7 @@ class Main extends PluginBase implements Listener{
 		$message = str_replace("{line}", "\n", $message);
 		$player->sendMessage($message);
 		$PlayerJoinMessage = str_replace("&", "§", strval($this->config->get("PlayerJoinMessage")));
-		$PlayerJoinMessage = str_replace("{player}", $name, $PlayerJoinMessage);
+		$PlayerJoinMessage = str_replace("{name}", $name, $PlayerJoinMessage);
 		$PlayerJoinMessage = str_replace("{line}", "\n", $PlayerJoinMessage);
 		$this->getServer()->broadcastMessage($PlayerJoinMessage);
 		if($player->isOp()){//If the player is OP.
