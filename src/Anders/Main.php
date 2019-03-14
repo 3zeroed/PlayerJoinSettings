@@ -9,6 +9,7 @@ use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerJoinEvent;
+use pocketmine\event\player\PlayerQuitEvent;
 
 class Main extends PluginBase implements Listener{
 
@@ -34,9 +35,6 @@ class Main extends PluginBase implements Listener{
 	public function onPlayerJoin(PlayerJoinEvent $event):void{//Try to send a message to the player when they join.
 		$player = $event->getPlayer();
 		$name = $player->getName();
-		//Set the Player Join Server message to NULL.
-		//So that we can customize the player to join the join server message.
-		$event->setJoinMessage("");
 		$Title = str_replace("&", "§", strval($this->config->get("Title")));
 		$Title = str_replace("{name}", $name, $Title);
 		$Title = str_replace("{line}", "\n", $Title);
@@ -51,10 +49,18 @@ class Main extends PluginBase implements Listener{
 		$PlayerJoinMessage = str_replace("&", "§", strval($this->config->get("PlayerJoinMessage")));
 		$PlayerJoinMessage = str_replace("{name}", $name, $PlayerJoinMessage);
 		$PlayerJoinMessage = str_replace("{line}", "\n", $PlayerJoinMessage);
-		$this->getServer()->broadcastMessage($PlayerJoinMessage);
+		$event->setJoinMessage($PlayerJoinMessage);
 		if($player->isOp()){//If the player is OP.
-		$player->setGamemode(1);//Set the game mode to Creative.
+			$player->setGamemode(1);//Set the game mode to Creative.
 		}
+	}
+	public function onPlayerQuit(PlayerQuitEvent $event):void{
+		$player = $event->getPlayer();
+		$name = $player->getName();
+		$PlayerQuitMessage = str_replace("&", "§", strval($this->config->get("PlayerQuitMessage")));
+		$PlayerQuitMessage = str_replace("{name}", $name, $PlayerQuitMessage);
+		$PlayerQuitMessage = str_replace("{line}", "\n", $PlayerQuitMessage);
+		$event->setQuitMessage($PlayerQuitMessage);
 	}
 /*
  *   ____                                                _ 
@@ -63,9 +69,9 @@ class Main extends PluginBase implements Listener{
  * | |___| (_) || | | | | || | | | | || (_| || | | || (_| |
  *  \____|\___/ |_| |_| |_||_| |_| |_| \__,_||_| |_| \__,_|
  */
-	public function onCommand(CommandSender $sender, Command $command, $label, array $args): bool{//Command
+	public function onCommand(CommandSender $sender, Command $command, $label, array $args): bool{
 		switch($command->getName()){
-			case "Anders":
+			case "Hello":
 			$sender->sendMessage("Hello, World!");
 			return true;
 		}
