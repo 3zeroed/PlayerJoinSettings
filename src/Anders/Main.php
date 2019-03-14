@@ -8,7 +8,7 @@
  * 
  * This a PocektMine-MP Plugin,There are many useful features
  * Open source, free,If you need help, please see the contact information below.
- * TencentQQ:480177664,Email: fox404@Foxmail.com,
+ * GitHub:"https://github.com/Anders233",Email: fox404@Foxmail.com,
  */
                  
 declare(strict_types=1);                        
