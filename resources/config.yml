@@ -5,7 +5,7 @@
 # You can also use & replace with color symbols.
 
 # The headline on the screen when joining (Title).
-Title: "&6Welcome!"
+Title: "&l&6Welcome!"
 
 # The text above the item bar when you join (SubTitle).
 SubTitle: "&bThis is a great server"
@@ -14,5 +14,8 @@ SubTitle: "&bThis is a great server"
 Message: "&aHello {name}. {line}&bwelcome to this server. {line}&eI wish you a happy time!"
 
 # Server broadcast message when the player joins (PlayerJoinMessage).
-PlayerJoinMessage: "&7(&9+&7) &a{name} joined the server."
+PlayerJoinMessage: "&l&7(&9+&7) &r&a{name} &ejoined the server."
+
+# Server broadcast message when the player Quits (PlayerQuitMessage).
+PlayerQuitMessage: "&l&7(&c-&7) &r&a{name} &eQuit the server."
 ...
