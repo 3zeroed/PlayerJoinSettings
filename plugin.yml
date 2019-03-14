@@ -1,18 +1,14 @@
 name: Anders
 main: Anders\Main
 version: 1.0.0
-api: [4.0.0]
+api: [3.0.0, 4.0.0]
 load: POSTWORLD
 author: Anders
 commands:
  Anders:
-  description: "AndersPlugin"
+  description: "AndersPluginCommand"
   usage: "/Anders"
   permission: Anders.command
 permissions:
- Anders.*:
-  description: "OP"
-  default: op
- Anders.command.Anders:
-  description: "Player"
+ Anders.command:
   default: true
