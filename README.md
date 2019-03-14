@@ -8,7 +8,7 @@ Planning project：
  {max_online}......
   - [x]	Custom player joins to send private chat messages
   - [x]	Custom player join message
-  - [ ]	Custom player Quit message
+  - [x]	Custom player Quit message
   - [x]	Customize player screen text prompts
   - [ ]	Pop up UI box when player joins
     - [ ] Click the button to execute the command
