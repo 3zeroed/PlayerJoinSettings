@@ -1,14 +1,14 @@
-name: Anders
+name: PlayerJoinSettings
 main: Anders\Main
 version: 1.0.0
 api: [3.0.0, 4.0.0]
 load: POSTWORLD
 author: Anders
 commands:
- Anders:
-  description: "AndersPluginCommand"
-  usage: "/Anders"
-  permission: Anders.command
+ Hello:
+  description: "Hello， World"
+  usage: "/Hello"
+  permission: PlayerJoinSettings.command
 permissions:
- Anders.command:
+ PlayerJoinSettings.command:
   default: true
