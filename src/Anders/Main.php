@@ -1,8 +1,22 @@
 <?php
+/**
+ *     _                _                  
+ *    / \    _ __    __| |  ___  _ __  ___ 
+ *   / _ \  | '_ \  / _` | / _ \| '__|/ __|
+ *  / ___ \ | | | || (_| ||  __/| |   \__ \
+ * /_/   \_\|_| |_| \__,_| \___||_|   |___/
+ * 
+ * This a PocektMine-MP Plugin,There are many useful features
+ * Open source, free,If you need help, please see the contact information below.
+ * TencentQQ:480177664,Email: fox404@Foxmail.com,
+ */
+                 
+declare(strict_types=1);                        
 
 namespace Anders;
 
 use pocketmine\utils\Config;
+use pocketmine\utils\TextFormat;
 use pocketmine\plugin\Plugin;
 use pocketmine\plugin\PluginBase;
 use pocketmine\command\Command;
@@ -79,13 +93,10 @@ class Main extends PluginBase implements Listener{
  */
 	public function onCommand(CommandSender $sender, Command $command, $label, array $args): bool{
 		switch($command->getName()){
-			case "Hello":
-			$sender->sendMessage("Hello, World!");
+			case "reloadconfig":
+			$this->config->reload();
+			$sender->sendMessage(TextFormat::YELLOW . "Profile reloading completed!");
 			return true;
 		}
 	}
-	
-	public function onDisable(){//Plugin disabled
-	}
-	//Very good, at least he can now function normally.
 }
