@@ -1,4 +1,6 @@
-# PlayerJoinSettings
+<h1>PlayerJoinSettings<img src="https://github.com/Anders233/PlayerJoinSettings/blob/master/icon.png" height="64" width="64" align="left"></img></h1>
+<br />
+
 My first PocketMine plugin
 I will try to make his creation more perfect.
 
