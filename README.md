@@ -1,11 +1,11 @@
 <h1>PlayerJoinSettings<img src="https://github.com/Anders233/PlayerJoinSettings/blob/master/icon.png" height="64" width="64" align="left"></img></h1>
-<br />
 
 [![Poggit](https://poggit.pmmp.io/ci.shield/Anders233/PlayerJoinSettings/~)](https://poggit.pmmp.io/ci/Anders233/PlayerJoinSettings/~) [![Discord](https://img.shields.io/discord/555689914679951380.svg)](https://discord.gg/jKh85hR)
 
-My first PocketMine plugin
-I will try to make his creation more perfect.
-If you have any questions, please feel free to provide feedback.
+My first PocketMine plugin<br />
+I will try to make his creation more perfect.<br />
+If you have any questions, please feel free to provide feedback.[![Discord](https://img.shields.io/discord/555689914679951380.svg)](https://discord.gg/jKh85hR)<br />
+Email: fox404@foxmail.com<br />
 
 - Planning project：
   - [x] Fully configurable configuration file
