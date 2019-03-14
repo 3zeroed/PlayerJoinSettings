@@ -63,10 +63,11 @@ class Main extends PluginBase implements Listener{
  *  \____|\___/ |_| |_| |_||_| |_| |_| \__,_||_| |_| \__,_|
  */
 	public function onCommand(CommandSender $sender, Command $command, $label, array $args): bool{//Command
-	switch($command->getName()){
-        	case "Anders":
-		$sender->sendMessage("Hello, World!");
-	        return true;
+		switch($command->getName()){
+			case "Anders":
+			$sender->sendMessage("Hello, World!");
+			return true;
+		}
 	}
 	
 	public function onDisable(){//Plugin disabled
