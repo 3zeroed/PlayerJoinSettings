@@ -13,6 +13,6 @@ SubTitle: "&bThis is a great server"
 # Private chat message sent to the player when joining (Message).
 Message: "&aHello {name}. {line}&bwelcome to this server. {line}&eI wish you a happy time!"
 
-# 玩家加入时，服务器广播消息 (PlayerJoinMessage).
+# Server broadcast message when the player joins (PlayerJoinMessage).
 PlayerJoinMessage: "&7(&9+&7) &a{name} joined the server."
 ...
