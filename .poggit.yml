@@ -3,5 +3,5 @@ branches:
 - master
 projects:
   PlayerJoinSettings:
-    path: "icon.png"
+    path: ""
 ...
