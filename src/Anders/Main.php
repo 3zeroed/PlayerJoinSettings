@@ -35,6 +35,8 @@ class Main extends PluginBase implements Listener{
 	public function onPlayerJoin(PlayerJoinEvent $event):void{//Try to send a message to the player when they join.
 		$player = $event->getPlayer();
 		$name = $player->getName();
+		$online = count($this->getServer()->getOnlinePlayers());
+		$Max_online = $this->getServer()->getMaxPlayers();
 		$Title = str_replace("&", "§", strval($this->config->get("Title")));
 		$Title = str_replace("{name}", $name, $Title);
 		$Title = str_replace("{line}", "\n", $Title);
@@ -49,6 +51,8 @@ class Main extends PluginBase implements Listener{
 		$PlayerJoinMessage = str_replace("&", "§", strval($this->config->get("PlayerJoinMessage")));
 		$PlayerJoinMessage = str_replace("{name}", $name, $PlayerJoinMessage);
 		$PlayerJoinMessage = str_replace("{line}", "\n", $PlayerJoinMessage);
+		$PlayerJoinMessage = str_replace("{online}", $online, $PlayerJoinMessage);
+		$PlayerJoinMessage = str_replace("{max_online}", $Max_online, $PlayerJoinMessage);
 		$event->setJoinMessage($PlayerJoinMessage);
 		if($player->isOp()){//If the player is OP.
 			$player->setGamemode(1);//Set the game mode to Creative.
@@ -57,9 +61,13 @@ class Main extends PluginBase implements Listener{
 	public function onPlayerQuit(PlayerQuitEvent $event):void{
 		$player = $event->getPlayer();
 		$name = $player->getName();
+		$online = count($this->getServer()->getOnlinePlayers());
+		$Max_online = $this->getServer()->getMaxPlayers();
 		$PlayerQuitMessage = str_replace("&", "§", strval($this->config->get("PlayerQuitMessage")));
 		$PlayerQuitMessage = str_replace("{name}", $name, $PlayerQuitMessage);
 		$PlayerQuitMessage = str_replace("{line}", "\n", $PlayerQuitMessage);
+		$PlayerQuitMessage = str_replace("{online}", $online, $PlayerQuitMessage);
+		$PlayerQuitMessage = str_replace("{max_online}", $Max_online, $PlayerQuitMessage);
 		$event->setQuitMessage($PlayerQuitMessage);
 	}
 /*
