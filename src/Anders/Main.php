@@ -2,6 +2,7 @@
 
 namespace Anders;
 
+use pocketmine\utils\Config;
 use pocketmine\plugin\Plugin;
 use pocketmine\plugin\PluginBase;
 use pocketmine\command\Command;
