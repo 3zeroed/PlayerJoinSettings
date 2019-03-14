@@ -36,10 +36,10 @@ class Main extends PluginBase implements Listener{
 		//Set the Player Join Server message to NULL.
 		//So that we can customize the player to join the join server message.
 		$event->setJoinMessage("");
-		$Title = str_replace("&", "§", strval($this->config->get("Title")))
+		$Title = str_replace("&", "§", strval($this->config->get("Title")))；
 		$Title = str_replace("{player}", $name, $Title);
 		$Title = str_replace("{line}", "\n", $Title);
-		$SubTitle = str_replace("&", "§", strval($this->config->get("SubTitle")))
+		$SubTitle = str_replace("&", "§", strval($this->config->get("SubTitle")))；
 		$SubTitle = str_replace("{player}", $name, $SubTitle);
 		$SubTitle = str_replace("{line}", "\n", $SubTitle);
 		$player->addTitle($Title, $SubTitle, 20, 60, 20);
