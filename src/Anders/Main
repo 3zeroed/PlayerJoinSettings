@@ -33,7 +33,7 @@ class Main extends PluginBase implements Listener{
 	public function onPlayerJoin(PlayerJoinEvent $event):void{//Try to send a message to the player when they join.
 		$player = $event->getPlayer();
 		$name = $player->getName();
-		//Set the Player Join Server message to NULL
+		//Set the Player Join Server message to NULL.
 		//So that we can customize the player to join the join server message.
 		$event->setJoinMessage("");
 		$Title = str_replace("&", "§", strval($this->config->get("Title")))
