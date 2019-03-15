@@ -1,14 +1,14 @@
 name: PlayerJoinSettings
 main: Anders\PlayerJoinSettings\Main
-version: 1.0.0
+version: 1.0.1
 api: [3.0.0, 4.0.0]
 load: POSTWORLD
 author: Anders
 commands:
- reloadconfig:
-  description: "reload PlayerJoinSettings config"
-  usage: "/reloadconfig"
-  permission: PlayerJoinSettings.command.reloadconfig
+ joinset:
+  description: "PlayerJoinSettingsCommand"
+  usage: "/joinset"
+  permission: PlayerJoinSettings.command
 permissions:
- PlayerJoinSettings.command.reloadconfig:
+ PlayerJoinSettings.command:
   default: op
