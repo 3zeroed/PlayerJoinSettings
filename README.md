@@ -48,5 +48,5 @@ PlayerQuitMessage: "&l&7(&c - &7) &r&a{name} &eQuit the server.&7[&a{online}&7/&
   - [x]	Custom player join message
   - [x]	Custom player Quit message
   - [x]	Customize player screen text prompts
-  - [ ]	Pop up UI box when player joins
+  - [x]	Pop up UI box when player joins
     - [ ] Click the button to execute the command
