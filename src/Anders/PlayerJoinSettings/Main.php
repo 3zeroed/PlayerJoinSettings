@@ -75,7 +75,8 @@ class Main extends PluginBase implements Listener{
 	public function onPlayerQuit(PlayerQuitEvent $event):void{
 		$player = $event->getPlayer();
 		$name = $player->getName();
-		$online = count($this->getServer()->getOnlinePlayers());
+		$OnlinePlayers = count($this->getServer()->getOnlinePlayers());
+		$online = $OnlinePlayers - 1;
 		$Max_online = $this->getServer()->getMaxPlayers();
 		$PlayerQuitMessage = str_replace("&", "§", strval($this->config->get("PlayerQuitMessage")));
 		$PlayerQuitMessage = str_replace("{name}", $name, $PlayerQuitMessage);
