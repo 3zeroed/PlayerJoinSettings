@@ -14,6 +14,7 @@ Fully customized player joins or exits the message,
 or sends a message to the player when joining, Title, SubTitle, pops up the UI form
 
 ![image](https://github.com/Anders233/PlayerJoinSettings/blob/master/Demonstration.png)
+![image](https://github.com/Anders233/PlayerJoinSettings/blob/master/Demonstration1.png)
 
 Configuration file:
 
