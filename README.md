@@ -17,28 +17,82 @@ or sends a message to the player when joining, Title, SubTitle, pops up the UI f
 ![image](https://github.com/Anders233/PlayerJoinSettings/blob/master/Demonstration1.png)
 
 Configuration file:
+---
+#Currently supported tags:
 
-Currently supported tags:
-{name}          - The name of the player.
-{line}          - Switch to the next line.
-{online}        - The number of online players currently on the server
-{max_online}    - The maximum number of players the server can accommodate
-You can also use & replace with color symbols.
+#{name}          - The name of the player.
 
-The headline on the screen when joining (Title).
-Title: "&l&6Welcome!"
+#{line}          - Switch to the next line.
 
-The text above the item bar when you join (SubTitle).
-SubTitle: "&bThis is a great server"
+#{online}        - The number of online players currently on the server
 
-Private chat message sent to the player when joining (Message).
-Message: "&aHello {name}. {line}&bwelcome to this server. {line}&eI wish you a happy time!"
+#{max_online}    - The maximum number of players the server can accommodate
 
-Server broadcast message when the player joins (PlayerJoinMessage).
-PlayerJoinMessage: "&l&7(&9 + &7) &r&a{name} &ejoined the server.&7[&a{online}&7/&6{max_online}&7]"
+#You can also use & replace with color symbols.
 
-Server broadcast message when the player Quits (PlayerQuitMessage).
-PlayerQuitMessage: "&l&7(&c - &7) &r&a{name} &eQuit the server.&7[&a{online}&7/&6{max_online}&7]"
+#Show title when players join? (true or false)
+
+TitleSwitch: true
+#The headline on the screen when joining (Title)
+
+Title: "&l&6 Welcome!"
+#The text above the item bar when you join (SubTitle)
+
+SubTitle: "&b This is a great server"
+
+#Send a message when the player joins? (true or false)
+
+MessageSwitch: true
+
+#Private chat message sent to the player when joining (Message)
+
+Message: "&a Hello {name}. {line}&b Welcome to this server. {line}&e I wish you a happy time!"
+
+#Undo the original player join prompt for the server? (true or false)
+
+UndoPlayerJoinMessage: true
+
+#Whether to prompt the message when the player joins? (true or false)
+
+PlayerJoinMessageSwitch: true
+
+#Server broadcast message when the player joins (Player Join Message).
+
+PlayerJoinMessage: "&l&7(&9+&7) &r&a{name} &ejoined the server.&7[&a{online}&7/&6{max_online}&7]"
+
+#Undo the original player exit prompt for the server? (true or false)
+
+UndoPlayerQuitMessage: true
+
+#Whether to prompt the message when the player Quits? (true or false)
+
+PlayerQuitMessageSwitch: true
+
+#Server broadcast message when the player Quits (Player Quit Message)
+
+PlayerQuitMessage: "&l&7(&c-&7) &r&a{name} &eQuit the server.&7[&a{online}&7/&6{max_online}&7]"
+
+#Pop up the UI form when the player joins? (true or false)
+
+PlayerJoinUIform: true
+
+#Title text content above the UI form
+
+UIformTitle: "&l&6 Welcome"
+
+#Text content in the UI form
+
+UIformContent: "&a Hello {name}. {line}&b Welcome to this server. {line}&e I wish you a happy time!"
+
+#The first button of the UI form displays the text
+
+UIformbutton1: "&a Confirm"
+
+#The second button of the UI form displays the text
+
+UIformbutton2: "&c Cancel"
+...
+
 
 - Planning project：
   - [x] Fully configurable configuration file
