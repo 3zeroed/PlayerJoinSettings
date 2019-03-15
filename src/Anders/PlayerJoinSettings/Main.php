@@ -13,7 +13,7 @@
                  
 declare(strict_types=1);                        
 
-namespace Anders;
+namespace Anders\PlayerJoinSettings;
 
 use pocketmine\utils\Config;
 use pocketmine\utils\TextFormat;
