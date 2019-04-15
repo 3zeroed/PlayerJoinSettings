@@ -22,10 +22,13 @@ use pocketmine\plugin\Plugin;
 use pocketmine\plugin\PluginBase;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
+use pocketmine\command\ConsoleCommandSender;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\event\player\PlayerQuitEvent;
+use pocketmine\event\server\DataPacketReceiveEvent;
 use pocketmine\network\mcpe\protocol\ModalFormRequestPacket;
+use pocketmine\network\mcpe\protocol\ModalFormResponsePacket;
 
 class Main extends PluginBase implements Listener{
 
@@ -53,7 +56,7 @@ class Main extends PluginBase implements Listener{
 		$name = $player->getName();
 		$online = count($this->getServer()->getOnlinePlayers());
 		$Max_online = $this->getServer()->getMaxPlayers();
-		if($this->config->get("TitleSwitch") == "true"){//Add some switches
+		if($this->config->get("TitleSwitch") == true){//Add some switches
 			$Title = str_replace("&", "§", strval($this->config->get("Title")));
 			$Title = str_replace("{name}", $name, $Title);
 			$Title = str_replace("{line}", "\n", $Title);
@@ -62,16 +65,16 @@ class Main extends PluginBase implements Listener{
 			$SubTitle = str_replace("{line}", "\n", $SubTitle);
 			$player->addTitle($Title, $SubTitle, 20, 60, 20);
 		}
-		if($this->config->get("MessageSwitch") == "true"){//Add some switches
+		if($this->config->get("MessageSwitch") == true){//Add some switches
 			$message = str_replace("&", "§", strval($this->config->get("Message")));
 			$message = str_replace("{name}", $name, $message);
 			$message = str_replace("{line}", "\n", $message);
 			$player->sendMessage($message);
 		}
-		if($this->config->get("UndoPlayerJoinMessage") == "true"){//Add some switches
-			$event->setJoinMessage("");
+		if($this->config->get("UndoPlayerJoinMessage") == true){//Add some switches
+			$event->setJoinMessage(NULL);
 		}
-		if($this->config->get("PlayerJoinMessageSwitch") == "true"){//Add some switches
+		if($this->config->get("PlayerJoinMessageSwitch") == true){//Add some switches
 			$PlayerJoinMessage = str_replace("&", "§", strval($this->config->get("PlayerJoinMessage")));
 			$PlayerJoinMessage = str_replace("{name}", $name, $PlayerJoinMessage);
 			$PlayerJoinMessage = str_replace("{line}", "\n", $PlayerJoinMessage);
@@ -79,7 +82,7 @@ class Main extends PluginBase implements Listener{
 			$PlayerJoinMessage = str_replace("{max_online}", $Max_online, $PlayerJoinMessage);
 			$this->getServer()->broadcastMessage($PlayerJoinMessage);
 		}
-		if($this->config->get("PlayerJoinUIform") == "true"){// Pop up the UI form when the player joins? (true or false)
+		if($this->config->get("PlayerJoinUIform") == true){// Pop up the UI form when the player joins? (true or false)
 			$title = str_replace("&", "§", strval($this->config->get("UIformTitle")));
 			$title = str_replace("{name}", $name, $title);
 			$title = str_replace("{line}", "\n", $title);
@@ -92,31 +95,54 @@ class Main extends PluginBase implements Listener{
 			$content = str_replace("{max_online}", $Max_online, $content);
 			$button1 = str_replace("&", "§", strval($this->config->get("UIformbutton1")));
 			$button2 = str_replace("&", "§", strval($this->config->get("UIformbutton2")));
-			$data = [
-			  "type" => "modal",
-			  "title" => $title,
-			  "content" => $content,
-			  "button1" => $button1,
-			  "button2" => $button2
-			];
+			$data = ["type" => "modal","title" => $title,"content" => $content,"button1" => $button1,"button2" => $button2];
 			$packet = new ModalFormRequestPacket();
-			$packet->formId = 5072;
+			$packet->formId = 9527;
 			$packet->formData = json_encode($data, JSON_PRETTY_PRINT | JSON_BIGINT_AS_STRING | JSON_UNESCAPED_UNICODE);
 			$player->dataPacket($packet);
 		}
-		if($player->isOp()){//If the player is OP.
-			$player->setGamemode(1);//Set the game mode to Creative.
+	}
+
+	public function onDataPacketReceive(DataPacketReceiveEvent $event): void{
+		$packet = $event->getPacket();
+		$player = $event->getPlayer();
+		$name = $player->getName();
+		if ($packet instanceof ModalFormResponsePacket) {
+			$id = $packet->formId;
+			$data = $packet->formData;
+			$result = json_decode($data);
+			echo $result;
+			if($data == "null\n"){
+			} else {
+				if ($id === 9527) {
+					if($result == true){
+						if($this->config->get("ButtonCommand") == true){//Add some switches
+							$ButtonCommand = $this->config->get("UIformbutton1cmd");
+							$ButtonCommand = str_replace("{name}", '"' . $name . '"', $ButtonCommand);
+							$this->getServer()->dispatchCommand(new consoleCommandSender(), $ButtonCommand);
+						}
+					}else{
+						if($this->config->get("ButtonCommand") == true){//Add some switches
+							$ButtonCommand = $this->config->get("UIformbutton2cmd");
+							$ButtonCommand = str_replace("{name}", '"' . $name . '"', $ButtonCommand);
+							$this->getServer()->dispatchCommand(new consoleCommandSender() ,$ButtonCommand);
+						}
+					}
+				}
+			}
 		}
 	}
+
 	public function onPlayerQuit(PlayerQuitEvent $event):void{
 		$player = $event->getPlayer();
 		$name = $player->getName();
-		$online = count($this->getServer()->getOnlinePlayers());
+		$onlinePlayers = count($this->getServer()->getOnlinePlayers());
+		$online = $onlinePlayers - 1;
 		$Max_online = $this->getServer()->getMaxPlayers();
-		if($this->config->get("UndoPlayerQuitMessage") == "true"){//Add some switches
-			$event->setQuitMessage("");
+		if($this->config->get("UndoPlayerQuitMessage") == true){//Add some switches
+			$event->setQuitMessage(NULL);
 		}
-		if($this->config->get("PlayerQuitMessageSwitch") == "true"){//Add some switches
+		if($this->config->get("PlayerQuitMessageSwitch") == true){//Add some switches
 			$PlayerQuitMessage = str_replace("&", "§", strval($this->config->get("PlayerQuitMessage")));
 			$PlayerQuitMessage = str_replace("{name}", $name, $PlayerQuitMessage);
 			$PlayerQuitMessage = str_replace("{line}", "\n", $PlayerQuitMessage);
@@ -140,10 +166,12 @@ class Main extends PluginBase implements Listener{
 					case "reload":
 					$this->config->reload();
 					$sender->sendMessage(TextFormat::YELLOW . "Profile reloading completed!");
+					$sender->sendMessage(TextFormat::YELLOW . "配置文件重新加载完成!");
 					return true;
 				}
 			}else{
-				$sender->sendMessage(TextFormat::RED . "usage: /joinset reload");
+				$sender->sendMessage(TextFormat::RED . "Usage: /joinset reload");
+				$sender->sendMessage(TextFormat::RED . "用法: /joinset reload");
 				return true;
 			}
 		}
