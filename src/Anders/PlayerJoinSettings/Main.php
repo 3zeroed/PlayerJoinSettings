@@ -29,8 +29,9 @@ use pocketmine\event\player\PlayerQuitEvent;
 use pocketmine\event\server\DataPacketReceiveEvent;
 use pocketmine\network\mcpe\protocol\ModalFormRequestPacket;
 use pocketmine\network\mcpe\protocol\ModalFormResponsePacket;
+use pocketmine\form\Form;
 
-class Main extends PluginBase implements Listener{
+class Main extends PluginBase implements Listener, Form{
 
 	public function onEnable(){//Plugin enabled
 	//I am not used to sending something that is useless to the background when the plugin is enabled.
