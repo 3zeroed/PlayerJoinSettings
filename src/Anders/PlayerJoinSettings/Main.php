@@ -112,7 +112,6 @@ class Main extends PluginBase implements Listener, Form{
 			$id = $packet->formId;
 			$data = $packet->formData;
 			$result = json_decode($data);
-			echo $result;
 			if($data == "null\n"){
 			} else {
 				if ($id === 9527) {
