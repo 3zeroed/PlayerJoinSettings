@@ -30,6 +30,8 @@ use pocketmine\event\server\DataPacketReceiveEvent;
 use pocketmine\network\mcpe\protocol\ModalFormRequestPacket;
 use pocketmine\network\mcpe\protocol\ModalFormResponsePacket;
 use pocketmine\form\Form;
+use Anders\PlayerJoinSettings\API\ModalForm;
+use Anders\PlayerJoinSettings\API\RootUIAPI;
 
 class Main extends PluginBase implements Listener, Form{
 
@@ -40,7 +42,9 @@ class Main extends PluginBase implements Listener, Form{
 	
 	public function onLoad(){//Plugin Load
         	@mkdir($this->getDataFolder(),0777,true);
-        	$this->saveResource('config.yml', false);
+        	if(!file_exists($this->getDataFolder()."config.yml")){
+        	    $this->saveResource("config.yml");
+        	}
         	$this->config = new Config($this->getDataFolder().'config.yml', Config::YAML);
 	}
 	
@@ -96,43 +100,50 @@ class Main extends PluginBase implements Listener, Form{
 			$content = str_replace("{max_online}", $Max_online, $content);
 			$button1 = str_replace("&", "§", strval($this->config->get("UIformbutton1")));
 			$button2 = str_replace("&", "§", strval($this->config->get("UIformbutton2")));
-			$data = ["type" => "modal","title" => $title,"content" => $content,"button1" => $button1,"button2" => $button2];
-			$packet = new ModalFormRequestPacket();
-			$packet->formId = 9527;
-			$packet->formData = json_encode($data, JSON_PRETTY_PRINT | JSON_BIGINT_AS_STRING | JSON_UNESCAPED_UNICODE);
-			$player->dataPacket($packet);
+			$UI = new ModalForm(9527);
+			$UI->setTitle($title);
+			$UI->setContent($content);
+			$UI->setButton1($button1);
+			$UI->setButton2($button2);
+			$UI->sendToPlayer($player);
 		}
 	}
-
+	
+	public function jsonSerialize() : void{
+	}
+	
+	public function handleResponse(Player $player, $data) : void{
+	}
+	
 	public function onDataPacketReceive(DataPacketReceiveEvent $event): void{
-		$packet = $event->getPacket();
-		$player = $event->getPlayer();
-		$name = $player->getName();
-		if ($packet instanceof ModalFormResponsePacket) {
-			$id = $packet->formId;
-			$data = $packet->formData;
-			$result = json_decode($data);
-			if($data == "null\n"){
-			} else {
-				if ($id === 9527) {
-					if($result == true){
-						if($this->config->get("ButtonCommand") == true){//Add some switches
-							$ButtonCommand = $this->config->get("UIformbutton1cmd");
-							$ButtonCommand = str_replace("{name}", '"' . $name . '"', $ButtonCommand);
-							$this->getServer()->dispatchCommand(new consoleCommandSender(), $ButtonCommand);
-						}
-					}else{
-						if($this->config->get("ButtonCommand") == true){//Add some switches
-							$ButtonCommand = $this->config->get("UIformbutton2cmd");
-							$ButtonCommand = str_replace("{name}", '"' . $name . '"', $ButtonCommand);
-							$this->getServer()->dispatchCommand(new consoleCommandSender() ,$ButtonCommand);
-						}
-					}
-				}
-			}
-		}
+	    $packet = $event->getPacket();
+	    $player = $event->getPlayer();
+	    $name = $player->getName();
+	    if ($packet instanceof ModalFormResponsePacket) {
+	        $id = $packet->formId;
+	        $data = $packet->formData;
+	        $result = json_decode($data);
+	        if($data == "null\n"){
+	        } else {
+	            if ($id === 9527) {
+	                if($result == true){
+	                    if($this->config->get("ButtonCommand") == true){//Add some switches
+	                        $ButtonCommand = $this->config->get("UIformbutton1cmd");
+	                        $ButtonCommand = str_replace("{name}", '"' . $name . '"', $ButtonCommand);
+	                        $this->getServer()->dispatchCommand(new consoleCommandSender(), $ButtonCommand);
+	                    }
+	                }else{
+	                    if($this->config->get("ButtonCommand") == true){//Add some switches
+	                        $ButtonCommand = $this->config->get("UIformbutton2cmd");
+	                        $ButtonCommand = str_replace("{name}", '"' . $name . '"', $ButtonCommand);
+	                        $this->getServer()->dispatchCommand(new consoleCommandSender() ,$ButtonCommand);
+	                    }
+	                }
+	            }
+	        }
+	    }
 	}
-
+	
 	public function onPlayerQuit(PlayerQuitEvent $event):void{
 		$player = $event->getPlayer();
 		$name = $player->getName();
