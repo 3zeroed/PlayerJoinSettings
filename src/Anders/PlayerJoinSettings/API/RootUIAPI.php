@@ -1,7 +1,6 @@
 <?php
 namespace Anders\PlayerJoinSettings\API;
 
-use pocketmine\form\Form;
 use pocketmine\network\mcpe\protocol\ModalFormRequestPacket;
 use pocketmine\Player;
 
