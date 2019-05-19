@@ -1,28 +1,26 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
+
 namespace Anders\PlayerJoinSettings\API;
 
 use pocketmine\Player;
 use pocketmine\network\mcpe\protocol\ModalFormRequestPacket;
+use function json_encode;
 
-class ModalForm extends RootUIAPI
-{
+class ModalForm extends RootUIAPI {
 
     public $id;
-
     private $data = [];
-
     private $content = "";
-
     public $playerName;
 
     /**
-     * Iåˆ›å»ºé€‰æ‹©æ€§UI
+     * I´´½¨Ñ¡ÔñÐÔUI
      *
      * @param int $id
      */
-    public function __construct(int $id)
-    {
+    public function __construct(int $id) {
         parent::__construct($id);
         $this->data["type"] = "modal";
         $this->data["title"] = "";
@@ -32,13 +30,12 @@ class ModalForm extends RootUIAPI
     }
 
     /**
-     * UIè¡¨å•å‘é€è‡³çŽ©å®¶
+     * UI±íµ¥·¢ËÍÖÁÍæ¼Ò
      *
      * {@inheritdoc}
      * @see Anders\PlayerJoinSettings\API\RootUIAPI::sendToPlayer()
      */
-    public function sendToPlayer(Player $player): void
-    {
+    public function sendToPlayer(Player $player): void {
         $pk = new ModalFormRequestPacket();
         $pk->formId = $this->id;
         $pk->formData = json_encode($this->data);
@@ -47,42 +44,39 @@ class ModalForm extends RootUIAPI
     }
 
     /**
-     * UI æ ‡é¢˜
+     * UI ±êÌâ
      *
      * @param string $title
      */
-    public function setTitle(string $title): void
-    {
+    public function setTitle(string $title): void {
         $this->data["title"] = $title;
     }
 
     /**
-     * UIæ ‡é¢˜
+     * UI±êÌâ
      *
      * @param string $content
      */
-    public function setContent(string $content): void
-    {
+    public function setContent(string $content): void {
         $this->data["content"] = $content;
     }
 
     /**
-     * UIç¬¬ä¸€ä¸ªæŒ‰é’®
+     * UIµÚÒ»¸ö°´Å¥
      *
      * @param string $text
      */
-    public function setButton1(string $text): void
-    {
+    public function setButton1(string $text): void {
         $this->data["button1"] = $text;
     }
 
     /**
-     * UI ç¬¬äºŒä¸ªæŒ‰é’®
+     * UI µÚ¶þ¸ö°´Å¥
      *
      * @param string $text
      */
-    public function setButton2(string $text): void
-    {
+    public function setButton2(string $text): void {
         $this->data["button2"] = $text;
     }
+
 }
