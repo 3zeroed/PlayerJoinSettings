@@ -112,11 +112,11 @@ class Main extends PluginBase implements Listener, Form {
     }
 
     public function jsonSerialize(): void {
-        
+
     }
 
     public function handleResponse(Player $player, $data): void {
-        
+
     }
 
     public function onDataPacketReceive(DataPacketReceiveEvent $event): void {
@@ -127,9 +127,7 @@ class Main extends PluginBase implements Listener, Form {
             $id = $packet->formId;
             $data = $packet->formData;
             $result = json_decode($data);
-            if ($data == "null\n") {
-                
-            } else {
+            if ($data != "null\n") {
                 if ($id === 9527) {
                     if ($result == true) {
                         if ($this->config->get("ButtonCommand") == true) {//Add some switches
