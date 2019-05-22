@@ -1,9 +1,11 @@
 name: PlayerJoinSettings
 main: Anders\PlayerJoinSettings\Main
-version: 2.0.2
+version: 3.0.0
 api: 3.0.0
 load: POSTWORLD
-author: Anders
+authors: 
+- Anders
+- wode490390
 commands:
  joinset:
   description: "PlayerJoinSettingsCommand"
