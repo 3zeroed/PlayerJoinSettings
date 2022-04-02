@@ -5,11 +5,6 @@
 <a href="https://poggit.pmmp.io/p/PlayerJoinSettings"><img src="https://poggit.pmmp.io/shield.state/PlayerJoinSettings">
 [![Download](https://img.shields.io/github/downloads/Anders233/PlayerJoinSettings/total.svg?label=Download)](https://github.com/Anders233/PlayerJoinSettings/releases)</a>
 
-My first PocketMine plugin<br />
-I will try to make his creation more perfect.<br />
-If you have any questions, please feel free to provide feedback.[![Discord](https://img.shields.io/discord/555689914679951380.svg)](https://discord.gg/jKh85hR)<br />
-Email: fox404@foxmail.com<br />
-
 Fully customized player joins or exits the message, 
 or sends a message to the player when joining, Title, SubTitle, pops up the UI form
 
