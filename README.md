@@ -1,10 +1,5 @@
 <h1>PlayerJoinSettings<img src="https://github.com/Anders233/PlayerJoinSettings/blob/master/icon.png" height="64" width="64" align="left"></img></h1>
 
-[![Poggit](https://poggit.pmmp.io/ci.shield/Anders233/PlayerJoinSettings/~)](https://poggit.pmmp.io/ci/Anders233/PlayerJoinSettings/~)
-[![Discord](https://img.shields.io/discord/555689914679951380.svg)](https://discord.gg/jKh85hR)[![](https://poggit.pmmp.io/shield.state/PlayerJoinSettings)](https://poggit.pmmp.io/p/PlayerJoinSettings)
-<a href="https://poggit.pmmp.io/p/PlayerJoinSettings"><img src="https://poggit.pmmp.io/shield.state/PlayerJoinSettings">
-[![Download](https://img.shields.io/github/downloads/Anders233/PlayerJoinSettings/total.svg?label=Download)](https://github.com/Anders233/PlayerJoinSettings/releases)</a>
-
 Fully customized player joins or exits the message, 
 or sends a message to the player when joining, Title, SubTitle, pops up the UI form
 
